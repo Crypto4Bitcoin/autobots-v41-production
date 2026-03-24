@@ -1,0 +1,12 @@
+[
+  {
+    "id": "hyp-1773724530406",
+    "timestamp": "2026-03-17T05:15:30.406Z",
+    "status": "rejected",
+    "title": "Regional Autonomous Registry",
+    "description": "Decentralize the core intent registry to regional governors to reduce cross-continental latency during failovers.",
+    "target_component": "IntentRegistry",
+    "proposed_topology": "Federated-Mesh",
+    "confidence_score": 0.94
+  }
+]

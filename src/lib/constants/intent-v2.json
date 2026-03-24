@@ -1,0 +1,16 @@
+[
+  {
+    "id": "obj-001",
+    "version": "2.0",
+    "name": "Maximize Legibility",
+    "weight": 0.9,
+    "description": "System decisions must be human-explainable."
+  },
+  {
+    "id": "obj-002",
+    "version": "2.0",
+    "name": "Constitutional Safety",
+    "weight": 1,
+    "description": "All mutations must pass ethical/stability gates."
+  }
+]

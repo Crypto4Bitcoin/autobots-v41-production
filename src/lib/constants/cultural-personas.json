@@ -1,0 +1,23 @@
+[
+  {
+    "id": "p-eng-01",
+    "name": "SRE Leader",
+    "professional_background": "Site Reliability Engineering",
+    "narrative_preference": "technical",
+    "tonality": "direct"
+  },
+  {
+    "id": "p-exec-01",
+    "name": "Strategic Director",
+    "professional_background": "Business Operations",
+    "narrative_preference": "conceptual",
+    "tonality": "objective"
+  },
+  {
+    "id": "p-creative-01",
+    "name": "User Advocate",
+    "professional_background": "Product Design",
+    "narrative_preference": "storytelling",
+    "tonality": "empathetic"
+  }
+]

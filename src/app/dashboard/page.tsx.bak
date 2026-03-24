@@ -1,0 +1,63 @@
+"use client";
+
+import React from "react";
+import { Sparkles, Plus, Filter, Search } from "lucide-react";
+
+export default function DashboardPage() {
+  return (
+    <div className="space-y-8">
+      {/* Header Section */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight">Content Inbox</h2>
+          <p className="text-zinc-500 mt-1">Manage and monitor pending content sources.</p>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <button className="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-zinc-400 hover:text-zinc-200 transition-colors">
+            <Filter className="w-4 h-4" />
+            <span>Filter</span>
+          </button>
+          <button className="flex items-center gap-2 px-5 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+            <Plus className="w-5 h-5" />
+            <span>New Item</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Stats Quick Look */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { label: "Active Jobs", value: "12", trend: "+2", icon: Sparkles },
+          { label: "Completed", value: "128", trend: "+14", icon: Sparkles },
+          { label: "Queued", value: "5", trend: "-1", icon: Sparkles },
+          { label: "Success Rate", value: "98.4%", trend: "+0.2%", icon: Sparkles },
+        ].map((stat, i) => (
+          <div key={i} className="glass-panel p-5 flex flex-col gap-1 ring-1 ring-white/5">
+            <span className="text-xs uppercase tracking-wider text-zinc-500 font-bold">{stat.label}</span>
+            <div className="flex items-end justify-between">
+              <span className="text-2xl font-bold">{stat.value}</span>
+              <span className="text-[10px] text-cyan-400 font-medium bg-cyan-500/10 px-1.5 py-0.5 rounded uppercase">
+                {stat.trend}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Main Content Area */}
+      <div className="glass-panel min-h-[400px] flex flex-col items-center justify-center p-20 text-center border-dashed border-zinc-800">
+        <div className="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center mb-6">
+          <Search className="w-8 h-8 text-zinc-700" />
+        </div>
+        <h3 className="text-xl font-bold text-zinc-300">No active items found</h3>
+        <p className="text-zinc-500 mt-2 max-w-sm">
+          Your content pipeline is currently idle. Paste a URL or upload a file to start the autonomous creation process.
+        </p>
+        <button className="mt-8 px-6 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-zinc-400 hover:text-zinc-200 transition-colors">
+          View History
+        </button>
+      </div>
+    </div>
+  );
+}

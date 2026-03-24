@@ -1,0 +1,40 @@
+# Phase 37: Operator Command Center & Platform Observability
+
+This phase delivers the "Operational Cockpit" for AutoBots. We transition from automated execution to human-in-the-loop operational authority at scale.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Intervention Latency**: Platform-level commands (Pause/Resume/Drain) must propagate to all workers via the event backbone. This introduces a small operational delay during global actions.
+> **Dashboard Density**: The `WorkflowRadarService` will process live event streams. In high-load scenarios, we will use a "Snapshot/Telemetry" pattern rather than raw event processing to ensure UI performance.
+
+## Proposed Changes
+
+### 1. Operator Visibility Layer
+#### [NEW] [fleet-dashboard.service.ts](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/AutoBots1/src/lib/services/fleet-dashboard.service.ts)
+- Aggregates worker health, load distribution, and capability heatmaps.
+#### [NEW] [workflow-radar.service.ts](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/AutoBots1/src/lib/services/workflow-radar.service.ts)
+- Real-time system map of active workflows, blocked nodes, and dead-letter spikes.
+#### [NEW] [capability-health.service.ts](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/AutoBots1/src/lib/services/capability-health.service.ts)
+- Health scores for capabilities based on latency, failure rates, and provider instability.
+
+### 2. Operational Cockpit
+#### [NEW] [operator-command-console.ts](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/AutoBots1/src/lib/services/operator-command-console.ts)
+- Centralized controls: Pause/Resume Platform, Drain Queues, Workspace Throttling, Pack Kill-switches.
+
+### 3. Observability Streams
+#### [NEW] [platform-telemetry.service.ts](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/AutoBots1/src/lib/services/platform-telemetry.service.ts)
+- Transforms raw events into operator metrics (Throughput, Cost Burn, Backlog Depth).
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- `test-operation-visibility.ts`:
+    - Scenario: Health scores correctly reflect high failure rates in a specific pool.
+    - Scenario: Radar detects a simulated dead-letter spike.
+- `test-control-plane-commands.ts`:
+    - Scenario: Global Pause event prevents workers from claiming new heartbeats.
+    - Scenario: Workspace throttling restricts job scheduling for a specific tenant.
+- `run-regression-suite.ts`: **Confirm 33/33 PASSED record.**

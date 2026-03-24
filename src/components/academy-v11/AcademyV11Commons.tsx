@@ -1,0 +1,1 @@
+export default function AcademyV11Commons({ data }: { data: unknown }) { return ( <section className="rounded-2xl border border-white/10 bg-neutral-900 p-4"> <h2 className="mb-4 text-xl font-semibold">Global Intelligence Commons</h2> <pre className="overflow-auto text-xs text-neutral-300">{JSON.stringify(data, null, 2)}</pre> </section> ) }

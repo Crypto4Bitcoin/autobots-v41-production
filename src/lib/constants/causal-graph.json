@@ -1,0 +1,39 @@
+[
+  {
+    "id": "ev-root",
+    "timestamp": "2026-03-17T05:08:18.441Z",
+    "event": "Mission Failure",
+    "source_layer": "mission_control",
+    "severity": "critical",
+    "parents": [
+      "ev-retry"
+    ],
+    "metadata": {
+      "note": "High-level mission abort."
+    }
+  },
+  {
+    "id": "ev-retry",
+    "timestamp": "2026-03-17T05:08:18.442Z",
+    "event": "Worker Retry Storm",
+    "source_layer": "worker_pool",
+    "severity": "error",
+    "parents": [
+      "ev-queue"
+    ],
+    "metadata": {
+      "note": "Retries exceeding 50/sec threshold."
+    }
+  },
+  {
+    "id": "ev-queue",
+    "timestamp": "2026-03-17T05:08:18.442Z",
+    "event": "Queue Saturation",
+    "source_layer": "infrastructure",
+    "severity": "warning",
+    "parents": [],
+    "metadata": {
+      "note": "Redis queue depth at 98%."
+    }
+  }
+]

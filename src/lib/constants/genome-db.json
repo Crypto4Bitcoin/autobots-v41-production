@@ -1,0 +1,21 @@
+[
+  {
+    "gene_id": "gene-001",
+    "name": "Facade Import Boundary",
+    "category": "code_stability",
+    "description": "Routes import through stable facades rather than deep service paths.",
+    "status": "trusted_gene",
+    "score": {
+      "reliability": 0.91,
+      "legibility": 0.87,
+      "governance": 0.78,
+      "truth_sync": 0.84,
+      "safe_evolution": 0.89
+    },
+    "evidence_count": 14,
+    "fragility_contrast": [
+      "deep_relative_import_chain"
+    ],
+    "promoted_at": "2026-03-17T04:48:44.087Z"
+  }
+]

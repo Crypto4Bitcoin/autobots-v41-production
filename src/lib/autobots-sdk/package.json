@@ -1,0 +1,12 @@
+{
+  "name": "autobots-sdk",
+  "version": "1.0.0",
+  "description": "AutoBots Platform SDK",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "author": "AutoBots",
+  "license": "MIT"
+}

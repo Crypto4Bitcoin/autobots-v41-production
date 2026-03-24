@@ -1,0 +1,1 @@
+export default function AcademyV10Summary({ data }: { data: unknown }) { return ( <section className="rounded-2xl border border-white/10 bg-neutral-900 p-4"> <div className="text-xs uppercase tracking-wide text-neutral-400">Ventures</div> <div className="mt-2 text-2xl font-semibold">{data.count}</div> </section> ) }

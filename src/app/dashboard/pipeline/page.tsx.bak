@@ -1,0 +1,116 @@
+"use client";
+
+import React from "react";
+import { Layers, Play, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const mockPipelineItems = [
+  { 
+    id: "1", 
+    title: "Future of AI Agents", 
+    state: "CONTENT_COMPOSITION", 
+    progress: 45,
+    lastRun: "CompositionAgent",
+    status: "processing"
+  },
+  { 
+    id: "2", 
+    title: "Ollama Integration Guide", 
+    state: "RESEARCHING", 
+    progress: 15,
+    lastRun: "IntakeAgent",
+    status: "processing"
+  },
+  { 
+    id: "3", 
+    title: "Sustainable Tech Trends", 
+    state: "READY_TO_POST", 
+    progress: 95,
+    lastRun: "PlatformReviewAgent",
+    status: "ready"
+  },
+];
+
+export default function PipelinePage() {
+  return (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-3xl font-bold tracking-tight">Active Pipeline</h2>
+        <p className="text-zinc-500 mt-1">Real-time status of all autonomous content tracks.</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
+        {mockPipelineItems.map((item) => (
+          <div key={item.id} className="glass-panel p-6 ring-1 ring-white/5 hover:ring-cyan-500/30 transition-all group">
+            <div className="flex items-start justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className={cn(
+                  "w-12 h-12 rounded-xl flex items-center justify-center",
+                  item.status === "ready" ? "bg-green-500/10" : "bg-cyan-500/10"
+                )}>
+                  {item.status === "ready" ? (
+                    <CheckCircle2 className="w-6 h-6 text-green-500 shadow-[0_0_15px_rgba(34,197,94,0.4)]" />
+                  ) : (
+                    <Clock className="w-6 h-6 text-cyan-500 animate-[spin_4s_linear_infinite]" />
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
+                    {item.title}
+                  </h3>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">{item.state}</span>
+                    <span className="text-zinc-700">•</span>
+                    <span className="text-xs text-zinc-400">Last: {item.lastRun}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <button className="px-4 py-1.5 bg-zinc-900 border border-zinc-800 rounded-lg text-xs font-bold text-zinc-400 hover:text-white transition-colors">
+                View Details
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-zinc-500">Pipeline Completion</span>
+                <span className="text-cyan-400 font-bold">{item.progress}%</span>
+              </div>
+              <div className="h-1.5 w-full bg-zinc-900 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all duration-1000"
+                  style={{ width: `${item.progress}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Pipeline Stage Visualization (Simplified) */}
+            <div className="mt-8 flex items-center justify-between gap-2 overflow-x-auto pb-2 scrollbar-none">
+              {["INGEST", "KNOWLEDGE", "STRATEGY", "PRODUCTION", "QC", "FINALIZE"].map((stage, i) => {
+                const stagesCompleted = (item.progress / 100) * 6;
+                const isCurrent = Math.floor(stagesCompleted) === i;
+                const isPassed = Math.floor(stagesCompleted) > i;
+
+                return (
+                  <div key={stage} className="flex-1 flex flex-col items-center gap-2 min-w-[80px]">
+                    <div className={cn(
+                      "w-4 h-4 rounded-full border-2 transition-all duration-500",
+                      isPassed ? "bg-cyan-500 border-cyan-500" : 
+                      isCurrent ? "bg-zinc-900 border-cyan-400 animate-pulse" : 
+                      "bg-zinc-900 border-zinc-800"
+                    )} />
+                    <span className={cn(
+                      "text-[9px] font-bold uppercase tracking-widest",
+                      isPassed || isCurrent ? "text-zinc-300" : "text-zinc-600"
+                    )}>{stage}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

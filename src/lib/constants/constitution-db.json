@@ -1,0 +1,19 @@
+[
+  {
+    "id": "law-001",
+    "name": "The First Law of Legibility",
+    "statement": "No mutation shall obfuscate the system's decision-making state for the purpose of local performance gains.",
+    "rationale": "Transparency is the foundation of operator sovereignty and long-term survival.",
+    "ratified_at": "2026-03-17T04:56:52.928Z",
+    "severity": "critical"
+  },
+  {
+    "id": "law-1773723412929",
+    "name": "Facade Import Boundary",
+    "statement": "Routes import through stable facades rather than deep service paths.",
+    "rationale": "Graduated from trusted gene gene-001 after successful operational proof.",
+    "ratified_at": "2026-03-17T04:56:52.929Z",
+    "source_gene_id": "gene-001",
+    "severity": "high"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "decision_id": "dec-1773723072064",
+    "timestamp": "2026-03-17T04:51:12.064Z",
+    "source_layer": "control_plane",
+    "intent_alignment": 0.98,
+    "explanation": "Mission routed to optimal latency region.",
+    "status": "executed"
+  },
+  {
+    "decision_id": "dec-1773723072083",
+    "timestamp": "2026-03-17T04:51:12.083Z",
+    "source_layer": "operator_sovereignty",
+    "intent_alignment": 1,
+    "explanation": "Priority interrupt broadcasted across system.",
+    "status": "executed"
+  }
+]

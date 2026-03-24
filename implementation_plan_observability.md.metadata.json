@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for Phase 37: Operator Command Center & Platform Observability. This phase delivers a unified cockpit for real-time monitoring, diagnostics, and operational intervention. We introduce dashboard services for fleet and workflow health, a command console for platform-level controls, and telemetry streams to transform raw events into actionable metrics.",
+  "updatedAt": "2026-03-15T23:17:50.549438200Z"
+}

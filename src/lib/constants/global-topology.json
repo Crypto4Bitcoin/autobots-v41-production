@@ -1,0 +1,35 @@
+[
+  {
+    "id": "us-east-1",
+    "type": "region",
+    "location": "Virginia, USA",
+    "status": "online",
+    "load": 12,
+    "latency_map": {
+      "eu-central-1": 85,
+      "ap-northeast-1": 160
+    }
+  },
+  {
+    "id": "eu-central-1",
+    "type": "region",
+    "location": "Frankfurt, DE",
+    "status": "online",
+    "load": 24,
+    "latency_map": {
+      "us-east-1": 85,
+      "ap-northeast-1": 210
+    }
+  },
+  {
+    "id": "ap-northeast-1",
+    "type": "region",
+    "location": "Tokyo, JP",
+    "status": "online",
+    "load": 8,
+    "latency_map": {
+      "us-east-1": 160,
+      "eu-central-1": 210
+    }
+  }
+]
