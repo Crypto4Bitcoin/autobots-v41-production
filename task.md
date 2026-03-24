@@ -1,0 +1,195 @@
+# AutoBots: Advanced Control Features
+
+## Phase 3: Intelligent Operations
+- [x] **Adaptive Policy Engine**
+    - [x] Design `PolicyService` and rule schema
+    - [x] Implement cost-based routing (Cheap vs Premium lanes)
+    - [x] Implement compliance-based review triggers
+    - [x] Add "optional stage" skipping for high queue depth
+- [x] **Versioned Artifact Lineage**
+    - [x] Create `artifacts` table with versioning and lineage (parent_ids)
+    - [x] Update agents to register artifacts during processing
+    - [x] Build a lineage visualizer helper
+- [x] **Outcome-Driven Optimization**
+    - [x] Implement feedback collection (engagement/scores)
+    - [x] Create "Tuning" memory category
+    - [x] Update `PolicyEngine` to bias behavior based on performance memory
+
+## Pilot Operations & Monitoring
+- [x] Implement Lock Heartbeat for long runs
+- [x] Bottleneck reporting from telemetry
+- [x] Optimization stability guardrails (thresholds/cooldowns)
+- [x] **Evented Workflow Backbone**
+    - [x] Create `pipeline_events` table for structured outcomes
+    - [x] Emit events from Orchestrator (Job Claimed, Start, State Change, etc.)
+    - [x] Decouple State Projection from Queue instructions
+- [x] **Phase 7: DAG Workflow Engine Migration**
+    - [x] Implement Workflow & Node Definition tables
+    - [x] Implement Node Execution & Run tracking
+    - [x] Refactored Orchestrator for runnable node scheduling
+    - [x] DAG Parallelism & Dependency validation
+- [x] **Phase 8: Platform Enablement Layer**
+    - [x] Create Agent Capability Registry (Schema + Service)
+    - [x] Implement Human Task Nodes & Approval suspends
+    - [x] Add External Tool Integration (API nodes)
+    - [x] Develop Visual DAG Builder (UI Editor)
+- [x] **Phase 9: Social Execution Pack v1**
+    - [x] Schema: External Accounts & Publish Jobs
+    - [x] Implement BrowserWorker (Playwright)
+    - [x] Implement MediaWorker (FFmpeg/Downloader)
+    - [x] Seed Social Execution Capabilities & Agents
+    - [x] Seed Multi-Platform DAG Template
+- [x] **Phase 10: Platform Operations & Voice Interaction Layer**
+    - [x] Implement VoiceWorker (STT/TTS Shell)
+    - [x] Create ConversationalCommandEngine (NLU to Orchestrator)
+    - [x] Integrate Search/Bing Capability
+    - [x] Implement Live Monitoring & Governance logic
+    - [x] Verify Voice-to-Action lifecycle
+- [x] **Platform vs. Vertical Packs Handover**
+    - [x] Codify 'Platform Layer' vs 'Vertical Packs' in [Architecture Vision](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/architecture_vision.md)
+    - [x] Tag agents with vertical packs in capability registry
+    - [x] Resolve final type-safety and linting blockers
+    - [x] Final Platform Walkthrough [Complete]
+- [x] **Phase 11: Platform Scale & Governance**
+    - [x] Schema: Workspace Governance & Pack Registry
+    - [x] Implement Trust Tiers for Capabilities
+    - [x] Create Platform Analytics Service (Bottleneck Detection)
+    - [x] Implement Vertical Pack Manifest & Enablement logic
+    - [x] Define Extension SDK (Capability Registration Lifecycle)
+- [x] **Phase 11.5: Voice Governance & Command Intelligence**
+    - [x] Implement IntentParserService (Structured Intent + Risk)
+    - [x] Create CommandPlannerService (Macro & Multi-step resolution)
+    - [x] Implement VoiceGovernanceService (Trust-based confirmation)
+    - [x] Create ConversationContextService (Contextual memory)
+    - [x] Implement ActionClasses & Simulation Mode
+    - [x] Verify Voice-to-Action lifecycle with Intelligence
+- [x] **Phase 11.6: Platform Stress Tests (Local Validation)**
+    - [x] Workflow 1: Failure, Retry, and Recovery (Runtime Safety)
+    - [x] Workflow 2: Voice-Controlled Operations (Command Intelligence)
+    - [x] Workflow 3: Competitor Intelligence Report (Research Pack)
+    - [x] Workflow 4: Mixed Human + Tool + Agent (Mixed Execution)
+    - [x] Workflow 5: Trend-to-Short Video (Media Boss Fight)
+- [x] **Phase 12: Autonomous Workflow Recommendation & Assembly**
+    - [x] Implement WorkflowRecommendationService (Goal -> Template)
+    - [x] Create WorkflowAssemblerService (Pattern-based DAG generation)
+    - [x] Implement PackRecommendationLayer (Goal -> Pack suggestion)
+    - [x] Create Interactive Voice-Guided Builder (NL -> DAG updates)
+    - [x] Verify Assembly safety against Governance Trust Tiers
+- [x] **Phase 13: Workflow Memory, Recommendations, and Reuse**
+    - [x] Create `workflow_recommendation_feedback` table
+    - [x] Create `workflow_proposals` table (Draft-First persistence)
+    - [x] Implement WorkflowMemoryService (Success/Failure patterns)
+    - [x] Create RecommendationFeedbackService (Closed-loop learning)
+    - [x] Verify smarter recommendations based on historical success
+- [x] **Phase 14: Visual Autonomous Workflow Builder**
+    - [x] Implement WorkflowProposalViewer (Visual ASCII/Graph projection)
+    - [x] Create WorkflowBuilderEditor (Add/Remove/Refine nodes)
+    - [x] Implement Policy-Aware Editing (In-editor validation)
+    - [x] Create ProposalActivationService (Draft -> Active)
+    - [x] Ensure all edits preserve DAG integrity & trust tiers
+- [x] **Phase 15: Platform Health Supervision**
+    - [x] Implement `PlatformIntelligenceService` (Event backbone observer)
+    - [x] Create `platform_insights` persistence layer
+    - [x] Implement `WorkflowHealthSupervisor` (Metrics & Bottlenecks)
+    - [x] Create `supervision_alerts` persistence layer
+    - [x] Create BottleneckSupervisor & DeadLetterTriageAgent
+    - [x] Implement CostAnomalyDetector & CapabilityDriftMonitor
+    - [x] Verify supervisory alerts and non-destructive recommendations
+- [x] **Phase 16: Pack Ecosystem & Lifecycle Management**
+    - [x] Implement PackRegistry & Lifecycle (Install/Upgrade/Pin)
+    - [x] Create WorkspacePackControls & CompatibilityService
+    - [x] Verify pack-specific governance & versioning
+- [x] **Phase 18: Autonomous Workforce Planning**
+    - [x] Implement `WorkforcePlannerService` (Plan proposals)
+    - [x] Ensure planner -> governance -> approval flow
+    - [x] Verify non-automatic execution of proposed plans
+- [x] **Phase 19: Self-Healing Runtime**
+    - [x] Implement `RuntimeRecoveryService` (Safe fix recommendations)
+    - [x] Integrate recovery with supervision alerts
+    - [x] Verify fallback provider and human escalation triggers
+- [x] **Phase 20: Platform Cost & Resource Intelligence**
+    - [x] Implement `CostIntelligenceService` (Cost & Resource tracking)
+    - [x] Integrate cost analysis into intelligence layer
+- [x] **Phase 21: Cross-Workflow Knowledge Graph**
+    - [x] Implement `KnowledgeGraphService` (Artifact chain relationships)
+    - [x] Enable pattern learning across disparate workflows
+- [x] **Phase 22: Autonomous Workflow Evolution**
+    - [x] Implement evolution logic (Success-driven DAG modification)
+    - [x] Create Proposal-to-Activation audit trail for evolution
+- [x] **Phase 23: Global Control Plane (The Safety Switch)**
+    - [x] Implement `ControlPlaneService` (Global pause/throttle/override)
+    - [x] Create master safety switch for runaway automation
+- [x] **Phase 24: Event-Driven Scaling & Projections**
+    - [x] Implement `ProjectionService` (State reconstruction from event log)
+    - [x] Update `DBService` with event-reconstruction methods
+    - [x] Enforce idempotency keys across all capability execution
+    - [x] Implement backpressure controls (Queue depth thresholds)
+    - [x] Partition `pipeline_events` store (Conceptual/Local simulation)
+    - [x] Verify workflow reconstruction after simulated worker crash
+- [x] **Phase 25: Distributed Worker Clustering & Registry**
+    - [x] Implement `WorkerRegistryService` (Health & Load tracking)
+    - [x] Create `QueueRouterService` (Class-based partitioning)
+    - [x] Implement `AsynchronousProjectionWorker` (Off-path state updates)
+    - [x] Add `worker_registry` persistence table methods
+    - [x] Implement Lease-based Heartbeat renewals
+    - [x] Verify isolated scaling of Browser vs General pools
+- [x] **Phase 26: Production Hardening & Safety Gates**
+    - [x] Implement `ArtifactLifecycleService` (Storage tier management)
+    - [x] Create `MetricAggregationService` (Health summaries vs raw noise)
+    - [x] Implement `EscalationPolicyService` (Human bottleneck detection)
+    - [x] Add version tracking to `WorkerRegistryService`
+    - [x] Define Event Replay Throttling policies
+    - [x] Verify automated human escalation after inactivity
+- [x] **Phase 27: Control Plane & Fleet Operations**
+    - [x] Implement `ControlPlaneService` (Global authority: pause/resume/throttle)
+    - [x] Create `FleetOperationsService` (Worker cordon/drain mode)
+    - [x] Verify global pause and worker selection isolation
+- [x] **Phase 28: Replay, Forensics & Time Travel**
+    - [x] Implement `ReplayService` (Dry-run event replaying)
+    - [x] Create `ForensicsService` (Execution trace & failure explanation)
+    - [x] Verify point-in-time state reconstruction
+- [x] **Phase 29: Autonomy Levels & Safety Modes**
+    - [x] Implement `AutonomyModeService` (Supervised to Fully Autonomous)
+    - [x] Create `SafetyModeService` (Normal vs Restricted envelopes)
+    - [x] Verify autonomy-governed capability blocking
+- [x] **Phase 30: Marketplace & Internal Ecosystem**
+    - [x] Implement `MarketplaceService` (Pack catalog & installs)
+    - [x] Create `DependencyResolutionService` (Version compatibility)
+    - [x] Verify governed pack approval flow
+- [x] **Phase 31: Workflow Learning & Auto-Evolution**
+    - [x] Implement `WorkflowEvolutionService` (Automated refinement proposals)
+    - [x] Create `VersionComparisonService` (Performance benchmarking)
+    - [x] Verify proposal-to-draft evolution cycle
+- [x] **Phase 32: Strategic Multi-Agent Workforce**
+    - [x] Implement `StrategicCoordinatorService` (Team assignment & consensus)
+    - [x] Create `LongHorizonPlanningService` (Strategic decomposition)
+    - [x] Verify multi-agent collaboration patterns
+- [x] **Phase 33: Global Task Graph & Unified Operating Model**
+    - [x] Implement `GlobalTaskGraphService` (Entity relationship mapping)
+    - [x] Create `CrossWorkflowIntelligenceService` (Unified insights)
+    - [x] Verify unified graph reconstruction from event log
+- [x] **Phase 34: Platform Guardrails & Runtime Enforcement**
+    - [x] Create `platform_guardrails.md` (Canonical policy doc)
+    - [x] Implement `GuardrailEnforcementService` (Runtime rule validator)
+    - [x] Add idempotency key validation to `JobLeaseService`
+    - [x] Enforce 'Dumb Worker' principle in `WorkerRegistryService`
+    - [x] Verify guardrail breach detection in stress tests
+- [x] **Phase 35: Deterministic Execution, Policy Compilation & Snapshot Recovery**
+    - [x] Implement `ContractStampService` (Pinned versions & Fail-closed)
+    - [x] Create `PolicyCompilerService` (Persisted policy artifacts)
+    - [x] Implement `IncrementalSnapshotService` (Tiered & Range-aware)
+    - [x] Verify Deterministic Replay Equivalence (Snapshot vs Full Ledger)
+- [ ] **Phase 36: Production Infrastructure, Load & Failover Validation**
+    - [ ] Implement `ClusterOrchestratorService` & `WorkerAutoscalerService`
+    - [ ] Create `SecretVaultService` & `RuntimeConfigService`
+    - [ ] Implement `TraceCorrelationService` (Distributed tracing)
+    - [ ] Create `LoadSimulationService` & Chaos Harness
+    - [ ] Verify Region Failover & Backpressure Enforcement
+- [x] **Critical Platform Gaps & Hardening**
+    - [x] Data Retention & Archival (Hot/Warm/Cold strategy)
+    - [x] Queue Wait Time tracking
+    - [x] Idempotency Enforcement (Side-effect protection)
+- [x] Canonical Documentation Hardening
+    - [x] Consolidate architecture vision into [walkthrough.md](file:///C:/Users/owner/.gemini/antigravity/brain/4334d2b3-67f2-4d2e-80b3-6ba8f258d54e/walkthrough.md)
+    - [x] Establish "One Source of Truth" discipline
+- [x] Strict Zod validation on all production agents
