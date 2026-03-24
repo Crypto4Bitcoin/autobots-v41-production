@@ -2,9 +2,9 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { PipelineState } from "../types/enums";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder";`nconst supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || "placeholder";
 
-export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey);`nexport const adminSupabase: SupabaseClient = createClient(supabaseUrl, supabaseServiceKey);
 
 export class DBService {
   static async getPipelineItem(id: string) {

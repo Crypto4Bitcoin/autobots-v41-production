@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/services/supabase-service";
+import { adminSupabase as supabase } from "@/lib/services/supabase-service";
 import { sendMessage } from "@/lib/telegram";
 
 const LOG = (tag: string, data: unknown) =>
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
     if (text === "/start" || text === "/menu") {
       try {
         await sendMessage(chatId, "<b>AutoBots v41.0 Production Menu</b>\n\nSystem: LEVEL 5.5 LIVE\nStatus: Heartbeat Active", {
-          inline_keyboard: [[{ text: "🚀 Start Automation", callback_data: "start_job" }]]
+          inline_keyboard: [[{ text: "ðŸš€ Start Automation", callback_data: "start_job" }]]
         });
         LOG("MENU_SENT", { chatId });
       } catch (e) {
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
       }
 
       try {
-        await sendMessage(chatId, "✅ <b>Job Queued.</b> Reality Pulse initialized in production.");
+        await sendMessage(chatId, "âœ… <b>Job Queued.</b> Reality Pulse initialized in production.");
       } catch (e) {
         LOG("JOB_REPLY_ERROR", { error: String(e) });
       }
