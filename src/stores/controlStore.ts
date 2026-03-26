@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { GlobalMemory } from '../lib/memory/globalMemory';
 
 interface Objective {
@@ -23,6 +23,7 @@ interface ControlState {
 
 interface ControlActions {
   triggerAction: (action: string, payload: any) => void;
+  addDecision: (decision: Decision) => void;
   syncControl: () => void;
 }
 
@@ -39,13 +40,22 @@ export const useControlStore = create<ControlStoreType>((set, get) => ({
   ],
   isTriggering: false,
 
+  addDecision: (decision) => {
+    set((state) => ({ 
+        decisions: [decision, ...state.decisions].slice(0, 50)
+    }));
+  },
+
   triggerAction: (action, payload) => {
     set({ isTriggering: true });
     setTimeout(() => {
-        set((state) => ({ 
-            decisions: [{ source_layer: 'Operator', timestamp: new Date().toISOString(), explanation: `Action triggered: ${action}. Payload synchronized.`, intent_alignment: 1.0 }, ...state.decisions].slice(0, 20),
-            isTriggering: false
-        }));
+        get().addDecision({ 
+            source_layer: 'Operator', 
+            timestamp: new Date().toISOString(), 
+            explanation: `Action triggered: ${action}. Payload synchronized.`, 
+            intent_alignment: 1.0 
+        });
+        set({ isTriggering: false });
         GlobalMemory.record("CONTROL", `Action triggered: ${action}. Sovereign intent updated.`, 100);
     }, 2000);
   },

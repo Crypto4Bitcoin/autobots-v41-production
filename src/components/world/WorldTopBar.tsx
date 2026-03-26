@@ -1,4 +1,5 @@
 'use client';
+import WorldButton from './ui/WorldButton';
 import DefenseStatusBar from "./DefenseStatusBar";
 import { worldTheme } from '../../lib/world/theme';
 import { useWorldStore } from '../../stores/worldStore';

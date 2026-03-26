@@ -10,12 +10,12 @@ export default function ReputationPanel() {
   const events = useReputationStore((s) => s.reputationEvents);
 
   return (
-    <div className="absolute left-[390px] top-24 z-30 w-[340px] rounded-[24px] border border-sky-400/15 bg-black/60 p-4 backdrop-blur-md">
-      <div className="text-[10px] uppercase tracking-[0.35em] text-sky-300/80">
+    <div className={`${worldTheme.panel} absolute left-[390px] top-24 z-30 w-[340px] p-4`.trim()}>
+      <div className={`${worldTheme.sectionLabel} text-sky-300/80`.trim()}>
         Reputational Scoring
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           Agent Trust
         </div>
@@ -29,7 +29,7 @@ export default function ReputationPanel() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           District Trust
         </div>

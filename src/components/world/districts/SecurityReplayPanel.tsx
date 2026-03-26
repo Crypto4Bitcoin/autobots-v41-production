@@ -13,8 +13,8 @@ export function SecurityReplayPanel() {
   const replay = useMemo(() => replayCurrentState(), [events, replayCurrentState]);
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <h2 className="text-2xl font-semibold">Deterministic Security Replay</h2>
+    <section className={`${worldTheme.panel} `.trim()}>
+      <h2 className={`${worldTheme.heading} text-2xl`.trim()}>Deterministic Security Replay</h2>
       <p className="mt-1 text-zinc-400">
         Chained event log for replay, audit proof, and state reconstruction.
       </p>
@@ -49,7 +49,7 @@ export function SecurityReplayPanel() {
 
       <div className="mt-6 space-y-3">
         {events.slice(-5).reverse().map((event) => (
-          <div key={event.id} className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+          <div key={event.id} className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
             <div className="flex items-center justify-between gap-3">
               <p className="font-medium">
                 {event.tick} • {event.type}
@@ -58,10 +58,10 @@ export function SecurityReplayPanel() {
                 {event.domain}
               </span>
             </div>
-            <p className="mt-2 text-xs text-zinc-500 break-all">
+            <p className={`${worldTheme.sectionLabel}mt-2 text-xs  break-all`.trim()}>
               hash: {event.hash}
             </p>
-            <p className="mt-1 text-xs text-zinc-500 break-all">
+            <p className={`${worldTheme.sectionLabel}mt-1 text-xs  break-all`.trim()}>
               prev: {event.prevHash ?? 'null'}
             </p>
           </div>
@@ -73,8 +73,8 @@ export function SecurityReplayPanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-zinc-950 border border-zinc-800 p-3">
-      <p className="text-zinc-500">{label}</p>
+    <div className={`${worldTheme.panel} `.trim()}>
+      <p className={`${worldTheme.sectionLabel}`.trim()}>{label}</p>
       <p className="mt-1 font-medium break-all">{value}</p>
     </div>
   );

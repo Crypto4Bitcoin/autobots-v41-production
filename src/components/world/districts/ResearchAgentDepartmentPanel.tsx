@@ -23,14 +23,14 @@ export function ResearchAgentDepartmentPanel() {
   } = useResearchDepartmentStore();
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <h2 className="text-2xl font-semibold">Research Agent Department</h2>
+    <section className={`${worldTheme.panel} `.trim()}>
+      <h2 className={`${worldTheme.heading} text-2xl`.trim()}>Research Agent Department</h2>
       <p className="mt-1 text-zinc-400">
         RED = manual link mode. BLUE = automatic decision mode using the first name in front of AGENT.
       </p>
 
       <div className="mt-5 grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 space-y-4">
+        <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4 space-y-4`.trim()}>
           <div>
             <label className="block text-sm text-zinc-400 mb-2">Research Link Box</label>
             <input
@@ -53,7 +53,7 @@ export function ResearchAgentDepartmentPanel() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-3">
-              <p className="text-sm text-zinc-500 mb-2">Decision Switch</p>
+              <p className={`${worldTheme.sectionLabel}text-sm  mb-2`.trim()}>Decision Switch</p>
               <div className="flex gap-2">
                 <WorldButton
                   onClick={() => setDecisionMode('RED')}
@@ -75,7 +75,7 @@ export function ResearchAgentDepartmentPanel() {
             </div>
 
             <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-3">
-              <p className="text-sm text-zinc-500 mb-2">Automatic Decision</p>
+              <p className={`${worldTheme.sectionLabel}text-sm  mb-2`.trim()}>Automatic Decision</p>
               <WorldButton
                 onClick={() => setAutomaticDecisionEnabled(!automaticDecisionEnabled)}
                 className={`rounded-lg px-4 py-2 text-sm ${
@@ -88,7 +88,7 @@ export function ResearchAgentDepartmentPanel() {
           </div>
 
           <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-3">
-            <p className="text-sm text-zinc-500 mb-2">BLUE mode option</p>
+            <p className={`${worldTheme.sectionLabel}text-sm  mb-2`.trim()}>BLUE mode option</p>
             <select
               value={selectedMode}
               onChange={(e) => setSelectedMode(e.target.value as 'e2e' | 'control-screen')}
@@ -116,7 +116,7 @@ export function ResearchAgentDepartmentPanel() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+        <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
             <Stat label="Status" value={status} />
             <Stat label="Decision" value={decisionMode} />
@@ -125,7 +125,7 @@ export function ResearchAgentDepartmentPanel() {
           </div>
 
           <div className="mt-4 rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-sm">
-            <p className="text-zinc-500">Resolution Rule</p>
+            <p className={`${worldTheme.sectionLabel}`.trim()}>Resolution Rule</p>
             <p className="mt-2 text-zinc-300">
               {decisionMode === 'RED'
                 ? currentInputUrl
@@ -141,12 +141,12 @@ export function ResearchAgentDepartmentPanel() {
 
       <div className="mt-6 space-y-4">
         {jobs.length === 0 ? (
-          <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400">
+          <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400`.trim()}>
             No research jobs yet.
           </div>
         ) : (
           jobs.map((job) => (
-            <div key={job.id} className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+            <div key={job.id} className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
               <div className="flex flex-col md:flex-row md:justify-between gap-3">
                 <div>
                   <h3 className="text-lg font-semibold">{job.id}</h3>
@@ -174,7 +174,7 @@ export function ResearchAgentDepartmentPanel() {
                       className="rounded-lg border border-zinc-800 bg-zinc-900 p-3"
                     >
                       <p className="text-sm font-medium">{shot.category}</p>
-                      <p className="text-xs text-zinc-500 break-all mt-1">
+                      <p className={`${worldTheme.sectionLabel}text-xs  break-all mt-1`.trim()}>
                         {shot.ipfsCid ?? 'no cid'}
                       </p>
                     </div>
@@ -198,8 +198,8 @@ export function ResearchAgentDepartmentPanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3">
-      <p className="text-zinc-500">{label}</p>
+    <div className={`${worldTheme.panel} rounded-xl bg-zinc-900 border border-zinc-800 p-3`.trim()}>
+      <p className={`${worldTheme.sectionLabel}`.trim()}>{label}</p>
       <p className="mt-1 font-medium break-all">{value}</p>
     </div>
   );

@@ -27,7 +27,7 @@ export default function SimulationPanel() {
         </WorldButton>
       </div>
 
-      <div className="mt-4 p-3 bg-white/5 border border-white/10 rounded-xl">
+      <div className={`${worldTheme.panel} mt-4 p-3 bg-white/5 border border-white/10 rounded-xl`.trim()}>
         <div className="flex justify-between text-[10px] text-white/50 mb-1 uppercase tracking-wider">
           <span>Dimensional Integrity</span>
           <span>{Math.round(100 - realityDrift)}%</span>
@@ -45,11 +45,11 @@ export default function SimulationPanel() {
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <div className="p-3 bg-indigo-500/10 border border-indigo-400/20 rounded-xl">
+        <div className={`${worldTheme.panel} p-3 bg-indigo-500/10 border border-indigo-400/20 rounded-xl`.trim()}>
             <div className="text-[10px] text-white/40 uppercase">Avg Fitness</div>
             <div className="text-lg font-bold text-white">{evolutionFitness}%</div>
         </div>
-        <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
+        <div className={`${worldTheme.panel} p-3 bg-white/5 border border-white/10 rounded-xl`.trim()}>
             <div className="text-[10px] text-white/40 uppercase">Active Shards</div>
             <div className="text-lg font-bold text-white tracking-widest">CORE-I</div>
         </div>
@@ -69,14 +69,14 @@ export default function SimulationPanel() {
 
       <div className="mt-4 max-h-[220px] space-y-3 overflow-y-auto pr-1">
         {decisions.length === 0 ? (
-          <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+          <div className={`${worldTheme.panel} text-sm text-white/50`.trim()}>
             No simulations yet.
           </div>
         ) : (
           decisions.map((decision, idx) => (
             <div
               key={`${decision.taskId}-${idx}`}
-              className="rounded-xl border border-indigo-400/20 bg-indigo-500/10 p-3"
+              className={`${worldTheme.panel} rounded-xl border border-indigo-400/20 bg-indigo-500/10 p-3`.trim()}
             >
               <div className={worldTheme.heading}>
                 Task {decision.taskId}

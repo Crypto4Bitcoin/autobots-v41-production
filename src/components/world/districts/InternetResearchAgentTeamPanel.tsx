@@ -19,14 +19,14 @@ export function InternetResearchAgentTeamPanel() {
   } = useInternetResearchTeamStore();
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <h2 className="text-2xl font-semibold">{teamName}</h2>
+    <section className={`${worldTheme.panel} `.trim()}>
+      <h2 className={`${worldTheme.heading} text-2xl`.trim()}>{teamName}</h2>
       <p className="mt-1 text-zinc-400">
         Internet-only team for real-life task research, content composition, verification, and marketplace packaging.
       </p>
 
       <div className="mt-5 grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 space-y-4">
+        <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4 space-y-4`.trim()}>
           <div>
             <label className="block text-sm text-zinc-400 mb-2">Research Query / Job</label>
             <input
@@ -61,7 +61,7 @@ export function InternetResearchAgentTeamPanel() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+        <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
             <Stat label="Brain ID" value={brain.id} />
             <Stat label="Capacity" value={`${brain.maxAssets}`} />
@@ -70,7 +70,7 @@ export function InternetResearchAgentTeamPanel() {
           </div>
 
           <div className="mt-4">
-            <p className="text-sm text-zinc-500">Brain Storage</p>
+            <p className={`${worldTheme.sectionLabel}text-sm `.trim()}>Brain Storage</p>
             <div className="mt-2 h-4 w-full rounded-full bg-zinc-800 overflow-hidden">
               <div
                 className="h-full bg-cyan-500"
@@ -94,12 +94,12 @@ export function InternetResearchAgentTeamPanel() {
 
       <div className="mt-6 space-y-4">
         {jobs.length === 0 ? (
-          <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400">
+          <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400`.trim()}>
             No internet research jobs yet.
           </div>
         ) : (
           jobs.map((job) => (
-            <div key={job.id} className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+            <div key={job.id} className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
               <div className="flex flex-col md:flex-row md:justify-between gap-3">
                 <div>
                   <h3 className="text-lg font-semibold">{job.sourceQuery}</h3>
@@ -135,8 +135,8 @@ export function InternetResearchAgentTeamPanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3">
-      <p className="text-zinc-500">{label}</p>
+    <div className={`${worldTheme.panel} rounded-xl bg-zinc-900 border border-zinc-800 p-3`.trim()}>
+      <p className={`${worldTheme.sectionLabel}`.trim()}>{label}</p>
       <p className="mt-1 font-medium break-all">{value}</p>
     </div>
   );

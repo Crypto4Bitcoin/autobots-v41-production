@@ -14,7 +14,7 @@ export default function PenaltyPanel() {
         Institutional Penalties
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           District Access
         </div>
@@ -30,7 +30,7 @@ export default function PenaltyPanel() {
 
       <div className="mt-4 max-h-[220px] space-y-3 overflow-y-auto pr-1">
         {penalties.length === 0 ? (
-          <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+          <div className={`${worldTheme.panel} text-sm text-white/50`.trim()}>
             No active penalties.
           </div>
         ) : (

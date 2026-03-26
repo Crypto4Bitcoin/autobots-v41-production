@@ -19,7 +19,7 @@ export default function EnforcementPanel() {
 
       <div className="mt-4 max-h-[320px] space-y-3 overflow-y-auto pr-1">
         {quarantinedPayouts.length === 0 ? (
-          <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+          <div className={`${worldTheme.panel} text-sm text-white/50`.trim()}>
             No quarantined payouts.
           </div>
         ) : (
@@ -29,7 +29,7 @@ export default function EnforcementPanel() {
             return (
               <div
                 key={item.id}
-                className="rounded-xl border border-orange-400/20 bg-orange-500/10 p-3"
+                className={`${worldTheme.panel} rounded-xl border border-orange-400/20 bg-orange-500/10 p-3`.trim()}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>

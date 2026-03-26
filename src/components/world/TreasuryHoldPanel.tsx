@@ -7,21 +7,21 @@ export default function TreasuryHoldPanel() {
   const treasuryHolds = useReputationStore((s) => s.treasuryHolds);
 
   return (
-    <div className="absolute left-[390px] bottom-24 z-30 w-[340px] rounded-[24px] border border-emerald-400/15 bg-black/60 p-4 backdrop-blur-md">
-      <div className="text-[10px] uppercase tracking-[0.35em] text-emerald-300/80">
+    <div className={`${worldTheme.panel} absolute left-[390px] bottom-24 z-30 w-[340px] p-4`.trim()}>
+      <div className={`${worldTheme.sectionLabel} text-emerald-300/80`.trim()}>
         Treasury Hold Routing
       </div>
 
       <div className="mt-4 max-h-[260px] space-y-3 overflow-y-auto pr-1">
         {treasuryHolds.length === 0 ? (
-          <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+          <div className={`${worldTheme.panel} text-sm text-white/50`.trim()}>
             No treasury holds yet.
           </div>
         ) : (
           treasuryHolds.map((hold) => (
             <div
               key={hold.id}
-              className="rounded-xl border border-emerald-400/20 bg-emerald-500/10 p-3"
+              className={`${worldTheme.panel} rounded-xl border border-emerald-400/20 bg-emerald-500/10 p-3`.trim()}
             >
               <div className="text-sm font-semibold text-white">
                 Gross $${hold.grossAmount}

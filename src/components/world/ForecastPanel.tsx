@@ -24,7 +24,7 @@ export default function ForecastPanel() {
         </WorldButton>
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           Treasury Exposure
         </div>
@@ -39,7 +39,7 @@ export default function ForecastPanel() {
         )}
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           Highest Agent Risk
         </div>
@@ -52,7 +52,7 @@ export default function ForecastPanel() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className={`${worldTheme.panel} mt-4`.trim()}>
         <div className="text-xs uppercase tracking-[0.2em] text-white/50">
           Highest District Risk
         </div>

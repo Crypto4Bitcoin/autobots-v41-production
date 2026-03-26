@@ -1,12 +1,19 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useState } from "react"
 import AgentTable from "@/components/academy/AgentTable"
 import QueuePanels from "@/components/academy/QueuePanels"
+import { domainRegistry, getDomainContract } from "@/contracts/registry"
+import { DomainContract } from "@/contracts/types"
+import DomainMetricsPanel from "@/components/hud/DomainMetricsPanel"
+import DomainCasesPanel from "@/components/hud/DomainCasesPanel"
+import DomainStatusBadge from "@/components/hud/DomainStatusBadge"
 
 export default function AcademyPage() {
-  const [data, setData] = useState<unknown>(null)
+  const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState(false)
+  const [selectedDomain, setSelectedDomain] = useState<string>("governance")
+  const [contract, setContract] = useState<DomainContract | null>(null)
 
   const load = async () => {
     try {
@@ -26,7 +33,18 @@ export default function AcademyPage() {
     return () => clearInterval(timer)
   }, [])
 
-  const call = async (url: string, body?: unknown) => {
+  useEffect(() => {
+    // Contract Refresh logic
+    const updateContract = () => {
+        const c = getDomainContract(selectedDomain);
+        setContract(c);
+    };
+    updateContract();
+    const timer = setInterval(updateContract, 1000);
+    return () => clearInterval(timer);
+  }, [selectedDomain]);
+
+  const call = async (url: string, body?: any) => {
     setLoading(true)
     try {
       await fetch(url, {
@@ -41,89 +59,92 @@ export default function AcademyPage() {
   }
 
   return (
-    <main className="min-h-screen bg-neutral-950 p-8 text-white">
-      <div className="mx-auto max-w-7xl space-y-8">
+    <main className="min-h-screen bg-neutral-950 p-8 text-white font-sans">
+      <div className="mx-auto max-w-7xl space-y-12">
         <header className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-2">
                <div className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
-               <p className="text-xs uppercase tracking-[0.3em] font-bold text-cyan-500">AutoBots V2 Academy</p>
+               <p className="text-[10px] uppercase tracking-[0.6em] font-black text-cyan-500">AutoBots Master System v41.0</p>
             </div>
-            <h1 className="mt-2 text-5xl font-black tracking-tight">Stewardship Console</h1>
-            <p className="mt-3 text-sm text-neutral-400 max-w-2xl leading-relaxed">
-              Orchestrate the 24/7 autonomous learning school. This score-driven factory prioritizes high-confidence research 
-              and simulates content performance before production promotion.
-            </p>
+            <h1 className="mt-4 text-6xl font-black tracking-tighter uppercase italic leading-none">Stewardship Console</h1>
           </div>
           
           {data?.school && (
-            <div className="rounded-2xl border border-white/10 bg-neutral-900/50 backdrop-blur-xl p-6 text-right transition-all">
-              <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 mb-1">Live School State</div>
-              <div className={`text-2xl font-black ${data.school.live ? 'text-emerald-400' : 'text-red-400'}`}>
-                {data.school.mode.toUpperCase()} {data.school.live ? "● ACTIVE" : "○ STOPPED"}
-              </div>
-              <div className="mt-2 text-[10px] text-neutral-600 font-mono">
-                OVERSEEN BY: {data.school.overseenBy.length} STEWARDS
+             <div className="rounded-[2.5rem] border border-white/5 bg-white/2 backdrop-blur-2xl p-10 text-right transition-all hover:bg-white/5 shadow-2xl">
+              <div className="text-[10px] uppercase font-black tracking-[0.4em] text-neutral-500 mb-2">Omniversal Runtime</div>
+              <div className={`text-4xl font-black tracking-tighter ${data.school.live ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {data.school.mode.toUpperCase()} {data.school.live ? "● LIVE" : "○ HALTED"}
               </div>
             </div>
           )}
         </header>
 
-        <section className="flex flex-wrap gap-3 p-1 rounded-xl bg-white/5 border border-white/5 w-fit">
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-emerald-500 px-6 py-2.5 text-black font-bold text-sm transition-all hover:bg-emerald-400 disabled:opacity-50" 
-            onClick={() => call("/api/academy/live/start")}
-          >
-            Start Operations
-          </button>
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-red-500/20 px-6 py-2.5 text-red-400 border border-red-500/30 font-bold text-sm transition-all hover:bg-red-500/30 disabled:opacity-50" 
-            onClick={() => call("/api/academy/live/stop")}
-          >
-            Cease Ops
-          </button>
-          <div className="w-px h-8 bg-white/10 mx-2 self-center" />
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-white/10 px-6 py-2.5 text-white font-bold text-sm transition-all hover:bg-white/20 disabled:opacity-50" 
-            onClick={() => call("/api/academy/rotate")}
-          >
-            Score-Based Rotation
-          </button>
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-cyan-500/20 px-6 py-2.5 text-cyan-400 border border-cyan-500/30 font-bold text-sm transition-all hover:bg-cyan-500/30 disabled:opacity-50" 
-            onClick={() => call("/api/academy/research", { agentId: "teacher-001" })}
-          >
-            Targeted Research (T-001)
-          </button>
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-violet-500/20 px-6 py-2.5 text-violet-400 border border-violet-500/30 font-bold text-sm transition-all hover:bg-violet-500/30 disabled:opacity-50" 
-            onClick={() => call("/api/content/build", { category: "ai" })}
-          >
-            Simulate AI Draft
-          </button>
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-yellow-500/20 px-6 py-2.5 text-yellow-400 border border-yellow-500/30 font-bold text-sm transition-all hover:bg-yellow-500/30 disabled:opacity-50" 
-            onClick={() => call("/api/autopost/queue")}
-          >
-            Priority Queue
-          </button>
-          <button 
-            disabled={loading}
-            className="rounded-lg bg-pink-500/20 px-6 py-2.5 text-pink-400 border border-pink-500/30 font-bold text-sm transition-all hover:bg-pink-500/30 disabled:opacity-50" 
-            onClick={() => call("/api/autopost/publish")}
-          >
-            Publish Top
-          </button>
+        {/* Global Contract Inspector */}
+        <section className="space-y-8 p-12 rounded-[5rem] border border-white/5 bg-white/1 shadow-inner relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-16 opacity-5 pointer-events-none transform group-hover:rotate-12 duration-1000">
+                <span className="text-[150px] font-black italic serif select-none">C</span>
+            </div>
+            
+            <div className="flex justify-between items-end mb-12 relative z-10 border-b border-white/5 pb-10">
+                <div>
+                   <h2 className="text-[10px] uppercase font-black tracking-[1em] text-neutral-600 mb-4 italic leading-none underline decoration-cyan-500/20 underline-offset-8">Intelligence Fabric Inspector</h2>
+                   <div className="flex gap-4 mt-6">
+                      {Object.keys(domainRegistry).map(domain => (
+                          <button 
+                            key={domain}
+                            onClick={() => setSelectedDomain(domain)}
+                            className={`px-10 py-4 rounded-full text-[10px] uppercase font-black tracking-[0.4em] transition-all italic border-2 ${
+                                selectedDomain === domain 
+                                ? 'bg-white text-black border-white shadow-2xl scale-105' 
+                                : 'bg-transparent text-white/30 border-white/5 hover:border-white/20'
+                            }`}
+                          >
+                            {domain}
+                          </button>
+                      ))}
+                   </div>
+                </div>
+                {contract && (
+                   <DomainStatusBadge status={contract.status} theme={contract.theme} size="lg" />
+                )}
+            </div>
+
+            {contract ? (
+                <div className="space-y-16 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                   <div>
+                        <h4 className="text-[10px] uppercase font-black tracking-[0.8em] text-white/10 mb-8 italic">Metric Telemetry</h4>
+                        <DomainMetricsPanel metrics={contract.metrics} theme={contract.theme} />
+                   </div>
+                   <div className="grid grid-cols-12 gap-16">
+                        <div className="col-span-8">
+                            <h4 className="text-[10px] uppercase font-black tracking-[0.8em] text-white/10 mb-8 italic">Registry Instances</h4>
+                            <DomainCasesPanel cases={contract.cases} theme={contract.theme} />
+                        </div>
+                        <div className="col-span-4 p-10 rounded-[4.5rem] bg-black/40 border border-white/5 flex flex-col justify-between">
+                            <div>
+                                <h4 className="text-[10px] uppercase font-black tracking-[0.5em] text-white/10 mb-6 italic">Domain Identity</h4>
+                                <div className="text-4xl font-black text-white italic uppercase tracking-tighter">{contract.title}</div>
+                                <p className="mt-4 text-xs text-white/30 italic leading-relaxed">System-wide parity maintained for intelligence layer {contract.domainId}.</p>
+                            </div>
+                            <div className="mt-12 text-[9px] uppercase font-black tracking-[0.4em] text-neutral-700 italic">
+                                LAST_SYNC: {contract.lastUpdated ? new Date(contract.lastUpdated).toLocaleTimeString() : 'WAITING'}
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            ) : (
+                <div className="py-24 text-center opacity-10">
+                    <span className="text-[100px] font-black italic serif">?</span>
+                    <div className="text-xs uppercase tracking-[0.5em] font-black italic mt-4">Telemetry Stream Dormant</div>
+                </div>
+            )}
         </section>
 
         {data && (
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="space-y-16 pt-12 border-t border-white/5 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <h2 className="text-[10px] uppercase font-black tracking-[1em] text-neutral-800 italic underline decoration-white/2 decoration-[8px] underline-offset-[12px]">Operational Subsystems</h2>
+            
             <QueuePanels
               memoryCount={data.memoryCount}
               socialDraftCount={data.socialDraftCount}
@@ -131,45 +152,31 @@ export default function AcademyPage() {
               productionQueuedCount={data.productionQueuedCount}
               productionScheduledCount={data.productionScheduledCount}
               productionPostedCount={data.productionPostedCount}
+              productionPostedCount2={data.productionPostedCount} // Fix for potential naming mismatch
               productionFailedCount={data.productionFailedCount}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
                <div className="lg:col-span-3">
                   <AgentTable agents={data.agents} />
                </div>
                <div className="lg:col-span-1 space-y-6">
-                  <div className="rounded-2xl border border-white/10 bg-neutral-900 p-6">
-                    <h3 className="text-lg font-bold">System Health</h3>
-                    <div className="mt-4 space-y-4">
-                       <div>
-                         <div className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest">Global Learning Avg</div>
-                         <div className="text-2xl font-black text-cyan-400">{(data.avgLearningScore * 100).toFixed(1)}%</div>
-                         <div className="mt-1 h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                           <div className="h-full bg-cyan-400" style={{ width: `${data.avgLearningScore * 100}%` }} />
-                         </div>
-                       </div>
-                       <div>
-                         <div className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest">Perf Stability</div>
-                         <div className="text-2xl font-black text-emerald-400">{(data.avgPerformanceScore * 100).toFixed(1)}%</div>
-                         <div className="mt-1 h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                           <div className="h-full bg-emerald-400" style={{ width: `${data.avgPerformanceScore * 100}%` }} />
-                         </div>
-                       </div>
+                  <div className="rounded-[4rem] border border-white/5 bg-white/1 p-10 hover:bg-white/2 transition-all">
+                    <h3 className="text-lg font-black uppercase tracking-widest italic mb-6">Health Matrix</h3>
+                    <div className="space-y-10">
+                       {[
+                         { label: 'Learning Avg', val: data.avgLearningScore, color: 'cyan' },
+                         { label: 'Perf Stability', val: data.avgPerformanceScore, color: 'emerald' }
+                       ].map(stat => (
+                        <div key={stat.label}>
+                          <div className="text-[9px] text-white/20 font-black uppercase tracking-[0.8em] italic mb-3">{stat.label}</div>
+                          <div className={`text-5xl font-black text-${stat.color}-400 italic tracking-tighter leading-none`}>{(stat.val * 100).toFixed(1)}%</div>
+                          <div className="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div className={`h-full bg-${stat.color}-400 shadow-[0_0_10px_currentColor]`} style={{ width: `${stat.val * 100}%` }} />
+                          </div>
+                        </div>
+                       ))}
                     </div>
-                  </div>
-                  
-                  <div className="rounded-2xl border border-white/10 bg-neutral-900 p-6">
-                     <h3 className="text-lg font-bold">Latest Action</h3>
-                     <p className="mt-1 text-xs text-neutral-500">{data.school?.lastGovernorActionAt ? new Date(data.school.lastGovernorActionAt).toLocaleString() : 'N/A'}</p>
-                     <div className="mt-4 space-y-2">
-                        {data.school?.overseenBy?.map((agent: string) => (
-                           <div key={agent} className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase font-bold tracking-tighter bg-white/2 p-2 rounded">
-                              <div className="h-1 w-1 rounded-full bg-emerald-500" />
-                              {agent}
-                           </div>
-                        ))}
-                     </div>
                   </div>
                </div>
             </div>

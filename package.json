@@ -1,20 +1,27 @@
 {
   "name": "scratch",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:hardening": "tsx src/tests/verify-hardening.ts"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:hardening": "tsx src/tests/verify-hardening.ts",
+    "validate:divisions": "node ./src/scripts/validate-divisions.mjs",
+    "check": "npm run validate:divisions && npm run typecheck && npm run lint",
+    "seed:divisions": "node ./src/scripts/seed-divisions.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "@supabase/supabase-js": "^2.99.1",
+    "@supabase/supabase-js": "2.50.0",
     "@tanstack/react-query": "^5.90.21",
     "axios": "^1.13.6",
     "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
     "framer-motion": "^12.36.0",
     "lucide-react": "^0.577.0",
     "next": "15.1.12",
@@ -22,19 +29,20 @@
     "openai": "^6.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "recharts": "2.15.4",
     "tailwind-merge": "^3.5.0",
-    "zod": "^4.3.6",
+    "zod": "3.24.3",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/node-cron": "^3.0.11",
+    "@types/node": "22.15.21",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^9",
     "eslint-config-next": "15.1.12",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
   }
 }

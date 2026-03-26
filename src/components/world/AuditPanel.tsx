@@ -9,14 +9,14 @@ export default function AuditPanel() {
   const timeline = useAuditStore((s) => s.timeline);
 
   return (
-    <div className="absolute right-6 top-24 z-30 w-[380px] rounded-[24px] border border-cyan-400/15 bg-black/60 p-4 backdrop-blur-md">
-      <div className="text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">
+    <div className={`${worldTheme.panel} absolute right-6 top-24 z-30 w-[380px] p-4`.trim()}>
+      <div className={`${worldTheme.sectionLabel} text-cyan-300/80`.trim()}>
         Audit Memory Archive
       </div>
 
       <div className="mt-4 max-h-[340px] space-y-3 overflow-y-auto pr-1">
         {records.length === 0 ? (
-          <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+          <div className={`${worldTheme.panel} text-sm text-white/50`.trim()}>
             No audit records yet.
           </div>
         ) : (
@@ -27,7 +27,7 @@ export default function AuditPanel() {
             return (
               <div
                 key={record.caseId}
-                className="rounded-xl border border-cyan-400/20 bg-cyan-500/10 p-3"
+                className={`${worldTheme.panel} rounded-xl border border-cyan-400/20 bg-cyan-500/10 p-3`.trim()}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>

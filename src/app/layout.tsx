@@ -1,22 +1,32 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+import { divisions } from '@/lib/divisions';
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "AutoBots | AI Operating System",
-  description: "Build AI workers that run tasks for you 24/7.",
+export const metadata = {
+  title: 'AutoBots Intelligence Scaffold v4',
+  description: 'Multi-division public-signal dashboard scaffold with DB wiring hooks and operator controls',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-[#0a0a0a] text-white min-h-screen`}>{children}</body>
+    <html lang="en">
+      <body>
+        <div className="shell">
+          <aside className="sidebar">
+            <div className="brand">AutoBots Research Grid</div>
+            <nav>
+              <Link href="/" className="navLink">Home</Link>
+              {divisions.map((division) => (
+                <Link key={division.slug} href={`/${division.slug}`} className="navLink">
+                  {division.name}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+          <main className="mainContent">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }

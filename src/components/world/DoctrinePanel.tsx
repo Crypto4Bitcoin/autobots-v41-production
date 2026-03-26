@@ -9,8 +9,8 @@ export default function DoctrinePanel() {
   if (!compiledPolicy) return null;
 
   return (
-    <div className="absolute right-[390px] bottom-24 z-30 w-[340px] rounded-[24px] border border-orange-400/15 bg-black/60 p-4 backdrop-blur-md">
-      <div className="text-[10px] uppercase tracking-[0.35em] text-orange-300/80">
+    <div className={`${worldTheme.panel} absolute right-[390px] bottom-24 z-30 w-[340px] p-4`.trim()}>
+      <div className={`${worldTheme.sectionLabel} text-orange-300/80`.trim()}>
         Active Overrides
       </div>
 

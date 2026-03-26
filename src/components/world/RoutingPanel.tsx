@@ -8,13 +8,13 @@ export default function RoutingPanel() {
   const latest = decisions[0];
 
   return (
-    <div className="absolute left-[1120px] bottom-24 z-30 w-[360px] rounded-[24px] border border-teal-400/15 bg-black/60 p-4 backdrop-blur-md">
-      <div className="text-[10px] uppercase tracking-[0.35em] text-teal-300/80">
+    <div className={`${worldTheme.panel} absolute left-[1120px] bottom-24 z-30 w-[360px] p-4`.trim()}>
+      <div className={`${worldTheme.sectionLabel} text-teal-300/80`.trim()}>
         Routing Board
       </div>
 
       {!latest ? (
-        <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/50">
+        <div className={`${worldTheme.panel} mt-4  text-sm text-white/50`.trim()}>
           No routing decisions available.
         </div>
       ) : (

@@ -8,8 +8,8 @@ export function CountermeasureRoutingPanel() {
   const { routes, autoRouteBreaches } = useCountermeasureStore();
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <h2 className="text-2xl font-semibold">Autonomous Countermeasure Routing</h2>
+    <section className={`${worldTheme.panel} `.trim()}>
+      <h2 className={`${worldTheme.heading} text-2xl`.trim()}>Autonomous Countermeasure Routing</h2>
       <p className="mt-1 text-zinc-400">
         Breach classes auto-dispatch the right agent classes into the defense fabric.
       </p>
@@ -41,12 +41,12 @@ export function CountermeasureRoutingPanel() {
 
       <div className="mt-6 space-y-3">
         {routes.length === 0 ? (
-          <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400">
+          <div className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-zinc-400`.trim()}>
             No countermeasure routes yet.
           </div>
         ) : (
           routes.slice(0, 6).map((route) => (
-            <div key={route.id} className="rounded-xl border border-zinc-800 bg-zinc-950 p-4">
+            <div key={route.id} className={`${worldTheme.panel} rounded-xl border border-zinc-800 bg-zinc-950 p-4`.trim()}>
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="font-medium">{route.id}</p>
@@ -75,8 +75,8 @@ export function CountermeasureRoutingPanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3">
-      <p className="text-zinc-500">{label}</p>
+    <div className={`${worldTheme.panel} rounded-xl bg-zinc-900 border border-zinc-800 p-3`.trim()}>
+      <p className={`${worldTheme.sectionLabel}`.trim()}>{label}</p>
       <p className="mt-1 font-medium break-all">{value}</p>
     </div>
   );

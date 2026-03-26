@@ -47,7 +47,7 @@ export default function NetworkDefensePanel() {
       </div>
 
       <div className="mt-5 space-y-4">
-        <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+        <div className={`${worldTheme.panel} `.trim()}>
           <div className="text-[9px] uppercase tracking-[0.2em] text-white/40">
             Threat Intelligence
           </div>
@@ -63,7 +63,7 @@ export default function NetworkDefensePanel() {
           </div>
         </div>
 
-                <div className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 p-4 shadow-inner">
+                <div className={`${worldTheme.panel} rounded-xl border border-indigo-500/30 bg-indigo-500/10 p-4 shadow-inner`.trim()}>
           <div className="flex items-center gap-2 mb-2">
             <div className="h-2 w-2 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.8)]" />
             <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-indigo-200">

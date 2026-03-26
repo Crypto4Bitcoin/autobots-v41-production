@@ -30,7 +30,7 @@ export default function SkillPanel() {
 
   if (!agent) {
     return (
-      <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/50">
+      <div className={`mt-5 ${worldTheme.panel} p-4 rounded-2xl text-sm text-white/50`}>
         Select an agent to view progression.
       </div>
     );
@@ -44,12 +44,12 @@ export default function SkillPanel() {
         <div className={worldTheme.sectionLabel}>
           Skill Tree // v1.2
         </div>
-        <button 
+        <WorldButton 
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="text-fuchsia-300/50 hover:text-fuchsia-300 transition-colors"
         >
           {isCollapsed ? '[ Expand ]' : '[ Collapse ]'}
-        </button>
+        </WorldButton>
       </div>
 
       {!isCollapsed && (
@@ -78,7 +78,7 @@ export default function SkillPanel() {
             </WorldButton>
           </div>
 
-          <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3">
+          <div className={`${worldTheme.panel} mt-4 rounded-xl border border-white/10 bg-black/20 p-3`.trim()}>
             <div className="flex items-center justify-between text-xs text-white/75">
               <span>XP Progress</span>
               <span className="font-mono">

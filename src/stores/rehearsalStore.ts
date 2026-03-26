@@ -1,5 +1,7 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { GlobalMemory } from '../lib/memory/globalMemory';
+import { logDomainEvent } from '../lib/domainLogger';
+import { registerHandler } from '../lib/domainCommands';
 
 interface StrategicScenario {
   id: string;
@@ -62,13 +64,40 @@ export const useRehearsalStore = create<RehearsalStoreType>((set, get) => ({
 
   runRehearsal: (id) => {
     set({ isSimulating: true });
+    
+    logDomainEvent({
+        domain: 'rehearsal',
+        action: 'simulation_started',
+        status: 'started',
+        payload: { scenarioId: id }
+    });
+
     setTimeout(() => {
         set({ isSimulating: false });
+        
+        logDomainEvent({
+            domain: 'rehearsal',
+            action: 'simulation_complete',
+            status: 'success',
+            payload: { scenarioId: id }
+        });
+        
         GlobalMemory.record("REHEARSAL", `Strategic rehearsal complete for scenario ${id}. Timeline parity confirmed.`, 100);
     }, 2000);
   },
 
   syncRehearsal: () => {
+    logDomainEvent({
+        domain: 'rehearsal',
+        action: 'sync_rehearsal',
+        status: 'success'
+    });
     GlobalMemory.record("REHEARSAL", "Omniversal rehearsal synchronized. All strategic models aligned.", 100);
   }
 }));
+
+// Command Governance Registration
+registerHandler('REHEARSAL_INITIATE_SIM', (payload) => {
+  const { scenarioId } = payload;
+  useRehearsalStore.getState().runRehearsal(scenarioId);
+});

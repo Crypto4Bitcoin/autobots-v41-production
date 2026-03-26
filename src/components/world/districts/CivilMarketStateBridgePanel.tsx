@@ -8,8 +8,8 @@ export function CivilMarketStateBridgePanel() {
   const { records, lastSyncAt, syncBridge } = useCivilMarketBridgeStore();
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <h2 className="text-2xl font-semibold">Civil-Market-State Bridge</h2>
+    <section className={`${worldTheme.panel} `.trim()}>
+      <h2 className={`${worldTheme.heading} text-2xl`.trim()}>Civil-Market-State Bridge</h2>
       <p className="mt-1 text-zinc-400">
         Synchronizes market objects into broader world and civic state flows.
       </p>
@@ -34,8 +34,8 @@ export function CivilMarketStateBridgePanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-zinc-950 border border-zinc-800 p-3">
-      <p className="text-zinc-500">{label}</p>
+    <div className={`${worldTheme.panel} `.trim()}>
+      <p className={`${worldTheme.sectionLabel}`.trim()}>{label}</p>
       <p className="mt-1 font-medium break-all">{value}</p>
     </div>
   );
