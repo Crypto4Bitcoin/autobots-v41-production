@@ -1,12 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import { SovereigntyControlService } from "../services/sovereignty-control.service";
 import { CapabilityRegistryService } from "../services/capability-registry-service";
-
-/**
- * ?? SOVEREIGN AXIS MIDDLEWARE (THE INFINITY SPEAR)
+**
+  * SOVEREIGN AXIS MIDDLEWARE (THE INFINITY SPEAR)
  * 
  * Every request through the sovereign head must pass this axis.
- * No bot can think itself into power—all intents are verified
+ * No bot can think itself into powerâ€”all intents are verified
  * against the immutable registry and current posture.
  */
 export async function sovereignAxisMiddleware(req: NextRequest) {
