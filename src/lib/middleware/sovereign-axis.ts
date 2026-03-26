@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { SovereigntyControlService } from "../services/sovereignty-control.service";
 import { CapabilityRegistryService } from "../services/capability-registry-service";
-**
+/**
   * SOVEREIGN AXIS MIDDLEWARE (THE INFINITY SPEAR)
  * 
  * Every request through the sovereign head must pass this axis.
